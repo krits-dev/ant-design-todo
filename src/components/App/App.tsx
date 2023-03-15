@@ -1,7 +1,11 @@
-import './index.scss'
+import './App.scss'
 
 function App() {
-  return <div>app</div>
+  return (
+    <div className='bg-container'>
+      <div className='app-wrapper'>App</div>
+    </div>
+  )
 }
 
 export default App

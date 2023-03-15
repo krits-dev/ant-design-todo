@@ -1,0 +1,20 @@
+@import 'helpers/all.scss';
+
+.bg-container {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  background: $bg-main;
+}
+.app-wrapper {
+  color: $white-primary;
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 600px;
+  height: auto;
+  padding: 15px;
+  border-radius: 25px;
+  margin: 40px auto;
+  border: 1px solid #ccc;
+}
