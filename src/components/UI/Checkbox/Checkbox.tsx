@@ -11,7 +11,7 @@ interface IProps {
 function CheckboxComponent({ complete, onChangeAction }: IProps) {
   return (
     <div className='checkbox-wrapper'>
-      <Checkbox onChange={onChangeAction} />
+      <Checkbox checked={complete} onChange={onChangeAction} />
     </div>
   )
 }

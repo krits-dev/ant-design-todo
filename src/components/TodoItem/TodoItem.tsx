@@ -9,12 +9,12 @@ interface IProps {
 }
 
 function TodoItem({ _id, description, complete, date }: IProps) {
-  console.log(description)
   return (
     <div className='todo-item-wrapper'>
       <Checkbox complete={complete} />
-      <Title task text={description} />
+      <Title task text={description} complete={complete} />
       <div className='button-group'>
+        <div className='todo-item-date'>{date}</div>
         <Button iconIs='edit' />
         <Button iconIs='delete' danger />
       </div>

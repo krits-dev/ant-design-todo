@@ -4,6 +4,7 @@
   width: 100%;
   height: auto;
   display: flex;
+
   .checkbox-wrapper {
     margin-right: 10px;
     margin-top: 2px;
@@ -11,8 +12,15 @@
   .button-group {
     display: flex;
     margin-left: auto;
-    .button-wrapper:nth-child(1) {
+    .button-wrapper:nth-child(2) {
       margin-right: 10px;
+    }
+    .todo-item-date {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-right: 0;
+      padding-right: 10px;
     }
   }
 }
