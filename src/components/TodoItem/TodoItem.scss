@@ -1,0 +1,18 @@
+.todo-item-wrapper {
+  padding: 10px;
+  min-width: 290px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  .checkbox-wrapper {
+    margin-right: 10px;
+    margin-top: 2px;
+  }
+  .button-group {
+    display: flex;
+    margin-left: auto;
+    .button-wrapper:nth-child(1) {
+      margin-right: 10px;
+    }
+  }
+}

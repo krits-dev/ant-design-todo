@@ -1,3 +1,4 @@
 import { App } from './App'
+import { TodoItem } from './TodoItem'
 
-export { App }
+export { App, TodoItem }

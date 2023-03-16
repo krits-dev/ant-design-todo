@@ -1,10 +1,13 @@
 @import 'helpers/all.scss';
 
 .title-wrapper {
+  display: flex;
+  align-items: center;
   h2 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: normal;
-    color: $white-primary
+    color: $white-primary;
+    line-height: 150%;
   }
   .complete {
     text-decoration: line-through;
