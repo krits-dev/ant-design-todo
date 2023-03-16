@@ -1,0 +1,10 @@
+.checkbox-wrapper {
+  .ant-checkbox-inner {
+    width: 26px;
+    height: 26px;
+    &:after {
+      width: 10px;
+      height: 16px;
+    }
+  }
+}

@@ -1,14 +1,10 @@
-import { Button } from 'components/UI'
+import { Checkbox, Button } from 'components/UI'
 import './App.scss'
 
 function App() {
   return (
     <div className='bg-container'>
-      <div className='app-wrapper'>
-        <Button text='Add Task' />
-        <Button iconIs='edit' />
-        <Button iconIs='delete' danger />
-      </div>
+      <div className='app-wrapper'></div>
     </div>
   )
 }

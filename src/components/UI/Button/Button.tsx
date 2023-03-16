@@ -16,7 +16,6 @@ function ButtonComponent({ text, danger, iconIs, onClickAction }: IProps) {
       <DeleteFilled />
     ) : null
 
-  console.log(buttonIcon)
   return (
     <div className='button-wrapper'>
       <Button
