@@ -9,32 +9,38 @@ import {
 import { Button } from 'components/UI'
 import { Input, Space, InputRef } from 'antd'
 import { TodosContext, ITodosContext } from 'provider/TodosProvider'
-import './AddTodo.scss'
+import './EditTodo.scss'
 
-function AddTodo() {
-  const { saveTodo } = useContext(TodosContext) as ITodosContext
-  const [value, setValue] = useState('')
+interface IProps {
+  id: number
+  description: string
+  setID: (id: number | null) => void
+}
+
+function EditTodo({ id, description, setID }: IProps) {
+  const { editTodo } = useContext(TodosContext) as ITodosContext
+  const [value, setValue] = useState(description)
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value)
   }
 
-  const handleAddTodo = () => {
-    if (!value.length) {
-      console.log('Enter your task')
-    }
-    saveTodo(value)
-    setValue('')
-  }
-
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter') {
       if (!value.length) {
-        console.log('Enter your task')
+        console.log('Type something')
       }
-      saveTodo(value)
-      setValue('')
+      editTodo(id, value)
+      setID(null)
     }
+  }
+
+  const handleEditTodo = (id: number, value: string) => {
+    if (!value.length) {
+      console.log('Type something')
+    }
+    editTodo(id, value)
+    setID(null)
   }
 
   const inputRef = useRef<InputRef>(null)
@@ -44,20 +50,25 @@ function AddTodo() {
   }, [])
 
   return (
-    <div className='add-todo-wrapper'>
+    <div className='edit-todo-wrapper'>
       <Space.Compact block size='large'>
         <Input
-          placeholder='Add a task'
           value={value}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           maxLength={28}
           ref={inputRef}
         />
-        <Button text='Add Task' onClickAction={handleAddTodo} />
+        <Button text='Edit' onClickAction={() => handleEditTodo(id, value)} />
       </Space.Compact>
     </div>
   )
 }
 
-export default AddTodo
+EditTodo.defaultProps = {
+  id: null,
+  description: '',
+  setID: () => null,
+}
+
+export default EditTodo
