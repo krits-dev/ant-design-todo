@@ -10,6 +10,7 @@ function TodoList() {
         const todo = (
           <Fragment key={_id}>
             <TodoItem
+              id={_id}
               description={description}
               complete={complete}
               date={date}

@@ -1,11 +1,11 @@
-import { memo, MouseEvent } from 'react'
+import { memo, SyntheticEvent } from 'react'
 import { Button } from 'antd'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
 interface IProps {
   text?: string
   danger?: boolean
   iconIs?: 'edit' | 'delete'
-  onClickAction?: (e: MouseEvent<any>) => void
+  onClickAction?: (e: SyntheticEvent) => void
 }
 
 function ButtonComponent({

@@ -1,14 +1,17 @@
+import { useContext} from 'react'
 import { Checkbox, Button, Title } from 'components/UI'
+import { TodosContext, ITodosContext} from 'provider/TodosProvider'
 import './TodoItem.scss'
 
 interface IProps {
-  _id: number
+  id: number
   description: string
   complete: boolean
   date: string
 }
 
-function TodoItem({ _id, description, complete, date }: IProps) {
+function TodoItem({ id, description, complete, date }: IProps) {
+  const { removeTodo } = useContext(TodosContext) as ITodosContext
   return (
     <div className='todo-item-wrapper'>
       <Checkbox complete={complete} />
@@ -16,14 +19,14 @@ function TodoItem({ _id, description, complete, date }: IProps) {
       <div className='button-group'>
         <div className='todo-item-date'>{date}</div>
         <Button iconIs='edit' />
-        <Button iconIs='delete' danger />
+        <Button iconIs='delete' danger onClickAction={() => removeTodo(id)} />
       </div>
     </div>
   )
 }
 
 TodoItem.defaultProps = {
-  _id: null,
+  id: null,
   description: '',
   complete: false,
   date: '',
