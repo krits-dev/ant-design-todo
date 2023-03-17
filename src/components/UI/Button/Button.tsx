@@ -8,7 +8,12 @@ interface IProps {
   onClickAction?: (e: MouseEvent<any>) => void
 }
 
-function ButtonComponent({ text, danger, iconIs, onClickAction }: IProps) {
+function ButtonComponent({
+  text,
+  danger,
+  iconIs,
+  onClickAction,
+}: IProps) {
   let buttonIcon =
     iconIs === 'edit' ? (
       <EditFilled />

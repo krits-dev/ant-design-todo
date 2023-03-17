@@ -1,10 +1,11 @@
-import { TodoList } from 'components'
+import { AddTodo, TodoList } from 'components'
 import './App.scss'
 
 function App() {
   return (
     <div className='bg-container'>
       <div className='app-wrapper'>
+        <AddTodo />
         <TodoList />
       </div>
     </div>
