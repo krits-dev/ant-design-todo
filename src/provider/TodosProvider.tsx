@@ -38,6 +38,7 @@ export interface ITodosContext {
   todos: ITodo[] | any
   saveTodo: (description: string) => void
   removeTodo: (id: number) => void
+  toggleTodo: (id: number) => void
 }
 
 export const TodosContext = createContext<ITodosContext | null>(null)
@@ -56,10 +57,22 @@ function TodosProvider({ children }: IContext) {
   }
 
   const removeTodo = (id: number): void => {
-    setTodos(todos.filter(({_id}) => _id !== id))
+    setTodos(todos.filter(({ _id }) => _id !== id))
   }
 
-  const value = useMemo(() => ({ todos, saveTodo, removeTodo }), [todos])
+  const toggleTodo = (id: number) => {
+    todos.filter((todo) => {
+      if (id === todo._id) {
+        todo.complete = !todo.complete
+      }
+      return setTodos([...todos])
+    })
+  }
+
+  const value = useMemo(
+    () => ({ todos, saveTodo, removeTodo, toggleTodo }),
+    [todos]
+  )
 
   return <TodosContext.Provider value={value}>{children}</TodosContext.Provider>
 }

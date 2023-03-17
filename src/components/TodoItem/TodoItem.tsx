@@ -1,6 +1,6 @@
-import { useContext} from 'react'
+import { useContext } from 'react'
 import { Checkbox, Button, Title } from 'components/UI'
-import { TodosContext, ITodosContext} from 'provider/TodosProvider'
+import { TodosContext, ITodosContext } from 'provider/TodosProvider'
 import './TodoItem.scss'
 
 interface IProps {
@@ -11,10 +11,10 @@ interface IProps {
 }
 
 function TodoItem({ id, description, complete, date }: IProps) {
-  const { removeTodo } = useContext(TodosContext) as ITodosContext
+  const { removeTodo, toggleTodo } = useContext(TodosContext) as ITodosContext
   return (
     <div className='todo-item-wrapper'>
-      <Checkbox complete={complete} />
+      <Checkbox complete={complete} onChangeAction={() => toggleTodo(id)} />
       <Title task text={description} complete={complete} />
       <div className='button-group'>
         <div className='todo-item-date'>{date}</div>
