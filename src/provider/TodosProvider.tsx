@@ -28,14 +28,15 @@ interface IContext {
 }
 
 export interface ITodo {
-  _id: number
+  _id?: number
   description: string
-  complete: boolean
+  complete?: boolean
   date?: string
 }
 
 export interface ITodosContext {
   todos: ITodo[] | any
+  saveTodo: (description: string) => void
 }
 
 export const TodosContext = createContext<ITodosContext | null>(null)
@@ -43,7 +44,17 @@ export const TodosContext = createContext<ITodosContext | null>(null)
 function TodosProvider({ children }: IContext) {
   const [todos, setTodos] = useState<ITodo[]>(data)
 
-  const value = useMemo(() => ({ todos }), [todos])
+  const saveTodo = (description: string) => {
+    const newTodo: ITodo = {
+      _id: Math.random(),
+      description,
+      complete: false,
+      date: today,
+    }
+    setTodos([...todos, newTodo])
+  }
+
+  const value = useMemo(() => ({ todos, saveTodo }), [todos])
 
   return <TodosContext.Provider value={value}>{children}</TodosContext.Provider>
 }

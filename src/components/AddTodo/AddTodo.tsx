@@ -2,18 +2,30 @@ import {
   useState,
   useEffect,
   useRef,
+  useContext,
   ChangeEventHandler,
   KeyboardEventHandler,
+  MouseEvent,
 } from 'react'
 import { Button } from 'components/UI'
 import { Input, Space, InputRef } from 'antd'
+import { TodosContext, ITodosContext } from 'provider/TodosProvider'
 import './AddTodo.scss'
 
 function AddTodo() {
+  const { saveTodo } = useContext(TodosContext) as ITodosContext
   const [value, setValue] = useState('')
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value)
+  }
+
+  const handleAddTodo = () => { 
+    if (!value.length) {
+      return console.log('enter your task')
+    }
+    saveTodo(value)
+    setValue('')
   }
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
@@ -21,6 +33,7 @@ function AddTodo() {
       if (!value.length) {
         return console.log('enter your task')
       }
+      saveTodo(value)
       setValue('')
     }
   }
@@ -41,7 +54,7 @@ function AddTodo() {
           onKeyDown={handleKeyDown}
           ref={inputRef}
         />
-        <Button text='Add Task' />
+        <Button text='Add Task' onClickAction={handleAddTodo} />
       </Space.Compact>
     </div>
   )
