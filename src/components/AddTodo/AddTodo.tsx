@@ -21,7 +21,7 @@ function AddTodo() {
 
   const handleAddTodo = () => {
     if (!value.length) {
-      console.log('Enter your task')
+      return console.log('Enter your task')
     }
     saveTodo(value)
     setValue('')
@@ -30,7 +30,7 @@ function AddTodo() {
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter') {
       if (!value.length) {
-        console.log('Enter your task')
+        return console.log('Enter your task')
       }
       saveTodo(value)
       setValue('')

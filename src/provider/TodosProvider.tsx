@@ -80,7 +80,7 @@ function TodosProvider({ children }: IContext) {
   }
 
   const value = useMemo(
-    () => ({ todos, saveTodo, removeTodo, toggleTodo, editTodogit status }),
+    () => ({ todos, saveTodo, removeTodo, toggleTodo, editTodo }),
     [todos]
   )
 
